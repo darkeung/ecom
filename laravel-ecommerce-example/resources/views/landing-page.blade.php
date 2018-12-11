@@ -26,6 +26,7 @@
                 <div class="hero-copy">
                     <h1>Laravel Ecommerce Demo</h1>
                     <p>Includes multiple products, categories, a shopping cart and a checkout system with Stripe integration.</p>
+
                     <div class="hero-buttons">
                         <a href="https://www.youtube.com/playlist?list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR" class="button button-white">Screencasts</a>
                         <a href="https://github.com/drehimself/laravel-ecommerce-example" class="button button-white">GitHub</a>
@@ -62,7 +63,7 @@
                 <div class="products text-center">
                     @foreach ($products as $product)
                         <div class="product">
-                            <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ asset('img/products/'.$product->slug.'.jpg') }}" alt="product"></a>
+                            <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ asset('storage/'.$product->image) }}" alt="product"></a>
                             <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->name }}</div></a>
                             <div class="product-price">{{ $product->presentPrice() }}</div>
                         </div>
