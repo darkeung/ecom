@@ -185,7 +185,7 @@
     <script>
         (function(){
             // Create a Stripe client
-            var stripe = Stripe('pk_test_JKVJPMynL8ckk7ivBxoroTlT');
+            var stripe = Stripe('pk_test_o5xYgwr8pMkAFUCyokKpC4VR');
 
             // Create an instance of Elements
             var elements = stripe.elements();
