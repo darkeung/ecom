@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
-
 class CheckoutController extends Controller
 {
     /**
@@ -17,6 +14,12 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        if (Cart::instance('default')->count() == 0) {
+            return redirect()->route('shop.index');
+        }
+        if (auth()->user() && request()->is('guestCheckout')) {
+            return redirect()->route('checkout.index');
+        }
         return view('checkout')->with([
             'discount' => $this->getNumbers()->get('discount'),
             'newSubtotal' => $this->getNumbers()->get('newSubtotal'),
@@ -24,8 +27,6 @@ class CheckoutController extends Controller
             'newTotal' => $this->getNumbers()->get('newTotal'),
         ]);
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +38,6 @@ class CheckoutController extends Controller
         $contents = Cart::content()->map(function ($item) {
             return $item->model->slug.', '.$item->qty;
         })->values()->toJson();
-
         try {
             $charge = Stripe::charges()->create([
                 'amount' => $this->getNumbers()->get('newTotal') / 100,
@@ -52,17 +52,14 @@ class CheckoutController extends Controller
                     'discount' => collect(session()->get('coupon'))->toJson(),
                 ],
             ]);
-
             // SUCCESSFUL
             Cart::instance('default')->destroy();
             session()->forget('coupon');
-
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
         } catch (CardErrorException $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
-
     private function getNumbers()
     {
         $tax = config('cart.tax') / 100;
@@ -70,7 +67,6 @@ class CheckoutController extends Controller
         $newSubtotal = (Cart::subtotal() - $discount);
         $newTax = $newSubtotal * $tax;
         $newTotal = $newSubtotal * (1 + $tax);
-
         return collect([
             'tax' => $tax,
             'discount' => $discount,
