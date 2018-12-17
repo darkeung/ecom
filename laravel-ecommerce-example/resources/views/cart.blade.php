@@ -8,13 +8,11 @@
 
 @section('content')
 
-    <div class="breadcrumbs">
-        <div class="container">
-            <a href="#">Home</a>
-            <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>Shopping Cart</span>
-        </div>
-    </div> <!-- end breadcrumbs -->
+    @component('components.breadcrumbs')
+        <a href="#">Home</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>Shopping Cart</span>
+    @endcomponent
 
     <div class="cart-section container">
         <div>
@@ -42,7 +40,7 @@
                 @foreach (Cart::content() as $item)
                 <div class="cart-table-row">
                     <div class="cart-table-row-left">
-                        <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ asset('storage/'.$item->model->image) }}" alt="item" class="cart-table-img"></a>
+                        <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img"></a>
                         <div class="cart-item-details">
                             <div class="cart-table-item"><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
                             <div class="cart-table-description">{{ $item->model->details }}</div>
@@ -172,7 +170,6 @@
     <script>
         (function(){
             const classname = document.querySelectorAll('.quantity')
-
             Array.from(classname).forEach(function(element) {
                 element.addEventListener('change', function() {
                     const id = element.getAttribute('data-id')
