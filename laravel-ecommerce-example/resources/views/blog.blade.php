@@ -87,7 +87,7 @@ TRADE IN 5 Games can get $100 and is used to purchase the PS4.</p>
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
-  <img src="img/71Kchra215L._AC_.jpg" style="width:100%">
+  <img src="img/roid-vs-apple-2110211370848349.jpg" style="width:100%">
     <div class="w3-container w3-white">
       <h4><b>About Us</b></h4>
       <p>Ecommerce</p>

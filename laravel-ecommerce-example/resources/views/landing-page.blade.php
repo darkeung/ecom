@@ -32,13 +32,13 @@
                     <h1>Ecommerce</h1>
                     <p>Includes multiple products, categories, a shopping cart and a checkout system with Stripe integration.</p>
                     <div class="hero-buttons">
-                        <a href="https://www.youtube.com/playlist?list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR" class="button button-white">Screencasts</a>
-                        <a href="https://github.com/drehimself/laravel-ecommerce-example" class="button button-white">GitHub</a>
+                        <a href="/shop" class="button button-white">Enter</a>
+                     <!--    <a href="#" class="button button-white">xxx</a> -->
                     </div>
                 </div> <!-- end hero-copy -->
 
                 <div class="hero-image">
-                    <img src="img/71Kchra215L._AC_.jpg" alt="hero image">
+                    <img src="img/roid-vs-apple-2110211370848349.jpg" alt="hero image">
                 </div> <!-- end hero-image -->
             </div> <!-- end hero -->
         </header>
