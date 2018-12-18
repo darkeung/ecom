@@ -22,3 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/search', 'ShopController@search')->name('search');
+
+Route::get('/blog', function() {return view('blog');});
+Route::get('/blog2', function() {return view('blog2');});
+Route::get('/about', function() {return view('about');});

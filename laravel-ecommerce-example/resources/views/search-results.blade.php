@@ -42,7 +42,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Details</th>
-                    <th>Description</th>
+                     <th>Image</th>
+                   <!--  <th>Description</th> -->
                     <th>Price</th>
                 </tr>
             </thead>
@@ -50,9 +51,10 @@
                 @foreach ($products as $product)
                     <tr>
                         <th><a href="{{ route('shop.show', $product->slug) }}">{{ $product->name }}</a></th>
-                        <td>{{ $product->details }}</td>
-                        <td>{{ str_limit($product->description, 80) }}</td>
-                        <td>{{ $product->presentPrice() }}</td>
+                        <th>{{ $product->details }}</th>
+                         <th><img src="{{ asset('storage/'.$product->image) }}" alt="product" height="50" width="80"></th>
+                     <!--    <td>{{ str_limit($product->description, 80) }}</td> -->
+                        <th>{{ $product->presentPrice() }}</th>
                     </tr>
                 @endforeach
             </tbody>
