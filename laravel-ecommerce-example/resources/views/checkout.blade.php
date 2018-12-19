@@ -32,6 +32,9 @@
             </div>
         @endif
 
+
+
+
         <h1 class="checkout-heading stylish-heading">Checkout</h1>
         <div class="checkout-section">
             <div>

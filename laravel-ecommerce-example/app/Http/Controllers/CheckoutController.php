@@ -7,6 +7,7 @@ use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
+
 class CheckoutController extends Controller
 {
     /**

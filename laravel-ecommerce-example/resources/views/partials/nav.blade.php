@@ -7,7 +7,7 @@
           @endif
       </div>
       <div class="top-nav-right">
-          @if (! (request()->is('checkout')|| request()->is('guestCheckout')))
+          @if (! (request()->is('nvatest'))) 
           @include('partials.menus.main-right')
           @endif
       </div>
