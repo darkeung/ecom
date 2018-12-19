@@ -64,8 +64,8 @@
                 @endforelse
             </div> <!-- end products -->
 
-            <div class="spacer"></div>
-            {{ $products->appends(request()->input())->links() }}
+           <div class="spacer"></div>
+           <center> {{ $products->appends(request()->input())->links() }}</center> 
         </div>
     </div>
 
